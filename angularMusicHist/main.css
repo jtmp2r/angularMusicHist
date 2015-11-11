@@ -1,0 +1,27 @@
+h1, h3 {
+  text-align: center;
+}
+.fieldset {
+  width: 14%;
+  display: inline-block;
+  line-height: 150%;
+  flex-grow: 1;
+  margin-top: 50px;
+}
+.field {
+  width: 80%;
+  display: block;
+  float: right;
+  background-color: ;
+  line-height: 150%;
+  flex-grow: 4;
+  margin-top: 50px;
+}
+
+
+
+.flex-container {
+  display: flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+}
