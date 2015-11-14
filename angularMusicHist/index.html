@@ -1,62 +1,39 @@
 <!DOCTYPE html>
-  <html>
+  <html lang="en">
     <head>
+      <meta charset="utf-8"> 
+      <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="main.css">
     </head>
-    <body>
-    <header class="col-md-12">
-      <fieldset class="heading">
-        <a href="view music">View Music</a> |
-        <a href="add music">Add Music</a> |
-        <a href="profile">Profile</a>
-      </fieldset>
-    </header>
-      <div class="flex-container">
-    <fieldset class="fieldset flex">
-      <label>Song Length</label>
-      <br/>
-      <input type="range" min="1" max="10" step="1" value="1"/>
-      <br/>
-      <label for="artist">Artist:</label>
-      <br/>
-      <input name="artist" list="artist" placeholder=Options />
-        <datalist id="artist">
-          <option value="Lupe Fiasco">
-          <option value="Seal">
-          <option value="Alicia Keys">
-          <option value="Kanye West">
-          <option value="John Coltrane">
-        </datalist>
-      <br/>
-      <label for="album">Album:</label>
-      <br/>
-      <input name="album" list="album" placeholder="Options" />
-        <datalist id="options">
-          <option value="Food & Liquor">
-          <option value="Soul">
-          <option value="Songs in A Minor">
-          <option value="Graduation">
-          <option value="In a Sentimental Mood">
-        </datalist>  
-      <br/>
-      <label for="genre">Genre:</label>
-      <br/>
-      <input type="checkbox" name="hip-hop" value="hip-hop">Hip Hop
-      <input type="checkbox" name="r&b" value="r&b">Rhythm & Blues
-      <input type="checkbox" name="jazz" value="jazz">Jazz
-    </fieldset>
-    <fieldset class="field flex">
-     <div ng-controller="MusicHis">
-       <button ng-click="songS(getData)"></button>
-     </div>
-     
-     
+  <body ng-app="musicHistory">
+    <div class="container">
+        <header>
+            <div class="navbar navbar-defaut navbar-fixed-top navbar-inverse">
+              <a href="#">View Music</a> |
+              <a href="#">Add Music</a> |
+              <a href="#">Profile</a>
+            </div>
+          </div> 
+          data-max="5" data-step="1">
+        </header>
+            <div class="jumbotron" class="containter">
+              <h1>Music:</h1>
+              <div data-score="1"></div>
+              <h3>Make your selection</h3>
+            </div>
+         
+    <div class="container">
+      <div class="col-md-12">
+        <div class= ng-view></div>
+      </div>
+    </div> 
     
 
     </fieldset>
-      <script type="text/javascript" src="lib/bower_components/angular/angular.js"></script>
-      <script data-main="javascript/main.js" src="bower_components/"></script>
       <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-      </div>
+      <script type="text/javascript" src="lib/bower_components/angular/angular.js"></script>
+      <script src="lib/bower_components/angular-route/angular-route.js"></script>
+      <script src="main.js"></script>
+
     </body>
   </html>

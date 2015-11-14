@@ -1,17 +1,19 @@
 {
 	"songs": [
-    
     {
+        "id": 1,
     	"title": "Bohemian Rhapsody",
     	"artist": "Queen",
     	"album": "Queen album"
     },
     {
+        "id": 2,
     	"title": "Swimming Pools",
     	"artist": "Kendrick Lamarr",
     	"album": "Mad World"
     },
     {
+        "id": 3,
     	"title": "Mad World",
     	"artist": "Tears for Fears",
     	"album": "80's Music"
