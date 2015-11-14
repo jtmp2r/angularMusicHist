@@ -1,4 +1,4 @@
-var app = angular.module("musicHistory", ['ngRoute'])
+var app = angular.module("musicHistory", ['ngRoute', 'firebase'])
 
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -7,75 +7,78 @@ app.config(['$routeProvider', function($routeProvider) {
 	  	controller: 'SongListCtrl'
 	  })
 	  .when('/songs/new', {
-	  	templateUrl: "partials/song-list.html",
+	  	templateUrl: "partials/song-form.html",
 	  	controller: 'addSongCtrl'
 
 	  })
 }]);
 
-app.factory('song_service', function($http, $q) {
-	var songList = [];
+// app.factory('song_service', function($http, $q) {
+// 	var songList = [];
 	
-  function init() {
-    return $q(function(resolve, reject) {
-    $http
-      .get('./data/songs.json')
-      .success(
-        function(objectFromJSONFile) {
-          songList = objectFromJSONFile.songs;
-          resolve(songList)
-        },function(error) {
-          reject(error);
-        }
-      );
-    });
-  }
+//   function init() {
+//     return $q(function(resolve, reject) {
+//     $http
+//       .get('/songs.json')
+//       .success(
+//         function(objectFromJSONFile) {
+//           songList = objectFromJSONFile.songs;
+//           resolve(songList)
+//         },function(error) {
+//           reject(error);
+//         }
+//       );
+//     });
+//   }
 
-  init();
+//   init();
 
-  function getSongs(){
-    return songList;
-  }
+//   function getSongs(){
+//     return songList;
+//   }
 
-  function getSingleSong(id) {
-    return songList.filter(function(song){
-      return song.id === id;
-    })[0];
-  }
+//   function getSingleSong(id) {
+//     return songList.filter(function(song){
+//       return song.id === id;
+//     })[0];
+//   }
 
-  function addSong(songObj) {
-    songList.push(songObj);
-    return songList;
-  }
+//   function addSong(songObj) {
+//     songList.push(songObj);
+//     return songList;
+//   }
 
-  return {
-    getSongs: getSongs,
-    getSingleSong: getSingleSong,
-    addSong: addSong
-  };
-}); //end factory
+//   return {
+//     getSongs: getSongs,
+//     getSingleSong: getSingleSong,
+//     addSong: addSong
+//   };
+// }); //end factory
 
 
 app.controller("SongListCtrl",
   [
     "$scope",
-    "song_service",
-    function($scope, song_service ) {
+    "$firebaseArray",
+    function($scope, $firebaseArray ) {
+    	var ref = new Firebase('https://music-historyjtmp.firebaseio.com/songs')
       // get initial list of songs on page load
-      $scope.songs_list = song_service.getSongs();
+      $scope.songs_list = $firebaseArray(ref);
+      console.log($scope.songs_list);
     }
   ]
 );
 
-app.controller("AddSongCtrl",
+app.controller("addSongCtrl",
   [
     "$scope",
-    "song_service",
-    function($scope, song_service ) {
-      $scope.newSong = { title: "", album: "", year: "", artist: "" };
+    "$firebaseArray",
+    function($scope, $firebaseArray ) {
+    var ref = new Firebase('https://music-historyjtmp.firebaseio.com/')
+    $scope.newSong = { title: "", album: "", year: "", artist: "" };
 
       $scope.addSong = function() {
-        song_service.addSong({
+        firebaseArray.addSong({
           artist: $scope.newSong.artist,
           title: $scope.newSong.title,
           album: $scope.newSong.album,

@@ -17,6 +17,12 @@
     	"title": "Mad World",
     	"artist": "Tears for Fears",
     	"album": "80's Music"
+    },
+    {
+        "id": 4,
+        "title": "Hard Times",
+        "artist": "Ray Charles",
+        "album": "Hard Times are Coming"
     }
   ]
 }

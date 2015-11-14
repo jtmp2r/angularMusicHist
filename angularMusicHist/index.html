@@ -16,22 +16,25 @@
           </div> 
           data-max="5" data-step="1">
         </header>
-            <div class="jumbotron" class="containter">
+          <div class=container>
+            <div class="jumbotron">
               <h1>Music:</h1>
               <div data-score="1"></div>
               <h3>Make your selection</h3>
             </div>
-         
+          </div>
+  <section>
     <div class="container">
-      <div class="col-md-12">
+      <div class="col-md-12 form-group">
         <div class= ng-view></div>
       </div>
     </div> 
+  </section>
     
-
-    </fieldset>
       <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
       <script type="text/javascript" src="lib/bower_components/angular/angular.js"></script>
+      <script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script>
+      <script type="text/javascript" src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
       <script src="lib/bower_components/angular-route/angular-route.js"></script>
       <script src="main.js"></script>
 
