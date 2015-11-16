@@ -9,7 +9,10 @@ app.config(['$routeProvider', function($routeProvider) {
 	  .when('/songs/new', {
 	  	templateUrl: "partials/song-form.html",
 	  	controller: 'addSongCtrl'
-
+	  })
+	  .when('/songs/new', {
+	  	templateUrl: "partials/song-detail.html",
+	  	controller: 'SongDetailCtrl'
 	  })
 }]);
 
@@ -75,7 +78,8 @@ app.controller("addSongCtrl",
     "$firebaseArray",
     function($scope, $firebaseArray ) {
     var ref = new Firebase('https://music-historyjtmp.firebaseio.com/')
-    $scope.newSong = { title: "", album: "", year: "", artist: "" };
+    $scope.songs = $firebaseArray(ref);
+    $scope.newSong = {};
 
       $scope.addSong = function() {
         firebaseArray.addSong({
@@ -88,6 +92,28 @@ app.controller("addSongCtrl",
     }
   ]
 );
+
+app.controller('SongDetailCtrl',
+  [
+    "$scope",
+    "$firebaseArray",
+    function($scope, $routeParams, $firebaseArray) {
+    	$scope.selectedSong = {};
+      $scope.songId = $routeParams.songId;
+
+      var ref = new Firebase("https://nss-nc02-ng-music.firebaseio.com/songs");
+      $scope.songs = $songsArray(ref);
+      $scope.songs.loaded()
+        .then(function() {
+        	$scope.selectedSong = $scope.songs.$getRecord($scope.songId);
+        })
+        .catch(function(error) {
+        console.log("Error:", error);
+        });
+
+    }
+  ]
+)
 
 
 // app.controller('SongListCtrl', function($scope) {

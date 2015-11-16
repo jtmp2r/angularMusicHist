@@ -2,11 +2,18 @@
   <input type="text" ng-model="query" />
 </div>
 <div class=row>
-  <div class="col-sm=9 text-center"
-		<div ng-repeat="song in songs_list | filter: query">
-		  <a href="#/songs/{{ song.id }}">{{ song.title }}</a>
-		  <a href="#/songs/{{ song.id }}">{{ song.artist }}</a>
-		  <a href="#/songs/{{ song.id }}">{{ song.album }}</a>
-		</div>
+  <div class="col-sm=12 text-center"
+
+			<div ng-repeat="song in songs_list | filter: query">
+			 <a href="#/songs/{{ song.id }}">
+			  <h2>{{ song.title }}</h2>
+			 </a>
+			 <a href="#/songs/{{ song.id }}">
+			  <h2>{{ song.artist }}</h2>
+			 </a>
+			 <a href="#/songs/{{ song.id }}">
+			  <h2>{{ song.album }}</h2>
+			 </a>
+			</div>
 	</div> 	
 </div>	
