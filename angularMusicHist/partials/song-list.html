@@ -4,7 +4,7 @@
 <div class=row>
   <div class="col-sm=12 text-center"
 
-			<div ng-repeat="song in songs_list | filter: query">
+			<div ng-repeat="song in songCtrl.songs_list | filter: query">
 			 <a href="#/songs/{{ song.id }}">
 			  <h2>{{ song.title }}</h2>
 			 </a>

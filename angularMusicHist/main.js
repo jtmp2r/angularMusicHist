@@ -4,15 +4,15 @@ app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 	  .when('/songs/list', {
 	  	templateUrl: "partials/song-list.html",
-	  	controller: 'SongListCtrl'
+	  	controller: 'SongListCtrl as songCtrl'
 	  })
 	  .when('/songs/new', {
 	  	templateUrl: "partials/song-form.html",
-	  	controller: 'addSongCtrl'
+	  	controller: 'addSongCtrl as addMusic'
 	  })
-	  .when('/songs/new', {
+	  .when('/songs/detail', {
 	  	templateUrl: "partials/song-detail.html",
-	  	controller: 'SongDetailCtrl'
+	  	controller: 'SongDetailCtrl as songDetail'
 	  })
 }]);
 
@@ -61,32 +61,30 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller("SongListCtrl",
   [
-    "$scope",
     "$firebaseArray",
-    function($scope, $firebaseArray ) {
+    function( $firebaseArray ) {
     	var ref = new Firebase('https://music-historyjtmp.firebaseio.com/songs')
       // get initial list of songs on page load
-      $scope.songs_list = $firebaseArray(ref);
-      console.log($scope.songs_list);
+      this.songs_list = $firebaseArray(ref);
+      console.log(this.songs_list);
     }
   ]
 );
 
 app.controller("addSongCtrl",
-  [
-    "$scope",
+  [   
     "$firebaseArray",
-    function($scope, $firebaseArray ) {
-    var ref = new Firebase('https://music-historyjtmp.firebaseio.com/')
-    $scope.songs = $firebaseArray(ref);
-    $scope.newSong = {};
+    function($firebaseArray ) {
+    var ref = new Firebase('https://music-historyjtmp.firebaseio.com/songs')
+    this.songs = $firebaseArray(ref);
+    this.newSong = {};
 
-      $scope.addSong = function() {
+      this.addSong = function() {
         firebaseArray.addSong({
-          artist: $scope.newSong.artist,
-          title: $scope.newSong.title,
-          album: $scope.newSong.album,
-          year: $scope.newSong.year
+          artist: this.newSong.artist,
+          title: this.newSong.title,
+          album: this.newSong.album,
+          year: this.newSong.year
         });
       };
     }
@@ -95,18 +93,17 @@ app.controller("addSongCtrl",
 
 app.controller('SongDetailCtrl',
   [
-    "$scope",
     "$firebaseArray",
-    function($scope, $routeParams, $firebaseArray) {
-    	$scope.selectedSong = {};
-      $scope.songId = $routeParams.songId;
+    function($routeParams, $firebaseArray) {
+    	this.selectedSong = {};
+      this.songId = $routeParams.songId;
 
       var ref = new Firebase("https://nss-nc02-ng-music.firebaseio.com/songs");
-      $scope.songs = $songsArray(ref);
-      $scope.songs.loaded()
+      this.songs = $songsArray(ref);
+      this.songs.loaded()
         .then(function() {
-        	$scope.selectedSong = $scope.songs.$getRecord($scope.songId);
-        })
+        	this.selectedSong = $scope.songs.$getRecord(this.songId);
+        }.bind(this))
         .catch(function(error) {
         console.log("Error:", error);
         });
@@ -114,6 +111,26 @@ app.controller('SongDetailCtrl',
     }
   ]
 )
+
+app.controller("SongFormCtrl", ["$scope", "$firebaseArray",
+  function($scope, $firebaseArray) {
+
+    var ref = new Firebase("https://nss-nc02-ng-music.firebaseio.com/songs");
+    $scope.songs = $firebaseArray(ref);
+    $scope.newSong = {};
+
+    $scope.addSong = function() {
+      $scope.songs.$add({
+        artist: $scope.newSong.artist,
+        name: $scope.newSong.name,
+        album: {
+          name: $scope.newSong.albumName,
+          year: $scope.newSong.albumYear
+        }
+      });
+    };
+  }
+]);
 
 
 // app.controller('SongListCtrl', function($scope) {
