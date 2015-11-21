@@ -1,15 +1,15 @@
 <section class="addForm">
   <div>
-    <span>Song name: </span><input type="text" ng-model="newSong.title" />
+    <span>Song name: </span><input type="text" ng-model="addMusic.newSong.title" />
   </div>
   <div>
-    <span>Album Name:</span> <input type="text" ng-model="newSong.album" />
+    <span>Album Name:</span> <input type="text" ng-model="addMusic.newSong.album" />
   </div>
   <div>
-    <span>Album Year:</span> <input type="text" ng-model="newSong.year" />
+    <span>Album Year:</span> <input type="text" ng-model="addMusic.newSong.year" />
   </div>
   <div>
-    <span>Artist:</span> <input type="text" ng-model="newSong.artist" />
+    <span>Artist:</span> <input type="text" ng-model="addMusic.newSong.artist" />
   </div>
-  <button ng-click="addSong()">Add Song</button>
+    <a class="btn btn-default" href="#/songs/list" role="button" ng-click="addMusic.addSong()">Add Song</a>
 </section>
