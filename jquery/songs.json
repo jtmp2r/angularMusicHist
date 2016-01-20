@@ -1,0 +1,19 @@
+{
+	"songs": [
+	{
+		"title": "Kick, Push",
+		"artist": "Lupe Fiasco",
+		"album": "Food & Liquor"
+	},	
+    {
+    	"title": "In a Sentimental Mood",
+    	"artist": "John Coltrane",
+    	"album": "Unknown"
+    },
+    {
+    	"title": "Sweat Pea",
+    	"artist": "Amos Lee",
+    	"album": "Unknown"
+    }
+  ]
+}

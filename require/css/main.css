@@ -1,0 +1,16 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #ffdead; }
+
+.orderResults {
+  background-color: pink; }
+  .orderResults .orderResults--list {
+    color: red; }
+
+.box-of-goodies {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px; }
+
+/*# sourceMappingURL=main.css.map */
