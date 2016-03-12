@@ -1,0 +1,11 @@
+div:nth-child(odd) {
+    background: #00FFFF;
+}
+
+div:nth-child(even) {
+    background: #FAFAD2;
+}
+
+.dotted {
+	border: dotted;
+}
