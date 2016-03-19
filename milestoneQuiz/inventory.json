@@ -1,0 +1,31 @@
+{
+  "cars": [
+    {
+      "make": "Lincoln",
+      "model": "Town Car",
+      "year": "2006",
+      "price": "10,999",
+      "color": "Black",
+      "purchased": false,
+      "description": "This is an immaculate 2006 Lincoln Town Car with only 25000 miles on it. Leather seats, power everything."
+    },
+    {
+    "make": "Buick",
+      "model": "LeSabre",
+      "year": "2010",
+      "price": "8,000",
+      "color": "Dark Red",
+      "purchased": false,
+      "description": "This smooth ride is the epitomy of class. All decked out in the best upgrades available. Only 50,000 miles on it."
+    },
+    {
+    "make": "Nissan",
+      "model": "Maxima",
+      "year": "2000",
+      "price": "13,000",
+      "color": "Black",
+      "purchased": false,
+      "description": "This ride has well over 150,000 miles but we guarentee at least triple that.You won't regret taking  chance on this."
+    }  
+  ]
+}
